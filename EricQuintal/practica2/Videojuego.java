@@ -1,4 +1,4 @@
-package EricQuintal.practica2;
+package EricQuintal.practica2; 
 //Importacion de Librerias para poder crear los e implemmentar los labels, La ventana y Agregar Propiedades de color 
 //Tambien para poder implementar acciones de mouse Eeventos del mouse y eventos de ventana
 import java.awt.Color;
