@@ -13,27 +13,28 @@ import java.awt.event.WindowEvent;
 
 // se crea Clase videojuego que hereda de Frame y tiene como interfaces MouseMotionListener y Mouse listener que estos seran los 
 //de realizar las insercion de los metodos abstractos a nuestra clase 
-public class Videojuego extends Frame implements MouseMotionListener, MouseListener{
+public class Principal extends Frame implements MouseMotionListener, MouseListener{
 
     Label objeto1;
     Label objeto2;
     Label objeto3;
     Label objeto4;
-    Reiniciar Reinicio;
-    Componentes C;
+    ElementoReinicio Reinicio;
+    Elementos E;
 
-    public Videojuego(){
+    public Principal(){
     
-        //Se crea el primer componente que es el boton
-        Reinicio = new Reiniciar("Reiniciar");
-        Reinicio.setBounds(420, 470, 90, 90);
-        Reinicio.setForeground(Color.WHITE);
+       //Elemento encargado de realizar la funcion de reinicio de juego
+        Reinicio = new ElementoReinicio("Reinicio");
+        Reinicio.setBounds(100, 400, 90, 90);
+        Reinicio.setForeground(Color.BLACK);
         Reinicio.addActionListener(evt ->btnRActionPerformed(evt));
         
-        //Se crean los componentes dos y tres
-        C = new Componentes();
+        //Instanciamos 
+        E = new Elementos();
 
-        //Se crean los componentes que tendran las funciones de arrastrar al otro objeto contenedor 
+        // Crean objetos los cuales tendran la funcion de arrastrar al contenedor y mantenerlos alli
+        //Hasta el momento de reincio
         objeto1 = new Label("   w   ");
         objeto1.setBounds(725, 200, 30, 30);
         objeto1.setBackground(Color.WHITE);
@@ -64,7 +65,7 @@ public class Videojuego extends Frame implements MouseMotionListener, MouseListe
         this.add(objeto3);
         this.add(objeto4);
         this.add(Reinicio);
-        this.add(C);
+        this.add(E);
     
         //Propiedades de la ventana
         this.setVisible(true);
@@ -75,12 +76,12 @@ public class Videojuego extends Frame implements MouseMotionListener, MouseListe
         
     }
 
-    //Se genera la accion del boton R
+    //Boton de creado de Rinicio
     private void btnRActionPerformed(ActionEvent e){
 		reiniciar();
 	}
 
-    //Metodo para cerrar la ventana
+    //metdo accion cerrrar ventana principal 
     public void cerrar() {
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -89,7 +90,7 @@ public class Videojuego extends Frame implements MouseMotionListener, MouseListe
 			}
 		});
 	}
-
+    // metodo encaragdo de Ejecutar accion del mause 
     public void mover(MouseEvent g, Label lbl) {
 		lbl.setLocation(
 		        lbl.getX() + g.getX() - lbl.getWidth() / 2,
@@ -97,7 +98,7 @@ public class Videojuego extends Frame implements MouseMotionListener, MouseListe
 		    );
 	}
 
-    //Se crea metodo para Reiniciar las posiciones
+    //metodo para reiniciar los objetos en el contenedor de que los almacena 
     public void reiniciar(){
         objeto1.setBounds(725, 200, 30, 30);
         objeto2.setBounds(775, 200, 30, 30);
@@ -108,7 +109,7 @@ public class Videojuego extends Frame implements MouseMotionListener, MouseListe
     public void validar(Label lbl) {
 		int x = lbl.getX();
 		int y = lbl.getY();
-		if(x>=50 & x<=350 & y>50 & y<350) {
+		if(x>=30 & x<=200 & y>20 & y<200) {
 		}else {
 			reiniciar();
 		}
@@ -116,7 +117,7 @@ public class Videojuego extends Frame implements MouseMotionListener, MouseListe
 	}
 
     public static void main(String[] args) {
-        Videojuego v = new Videojuego();
+        Principal v = new Principal();
     }
     // metdos abtractos generados por las interfaces de los eventos del mouse
     @Override
@@ -130,7 +131,7 @@ public class Videojuego extends Frame implements MouseMotionListener, MouseListe
         // TODO Auto-generated method stub
         
     }
-    // creacion de envento q se se encarga de arrastrar al componente creado
+    // creacion metdodo que se encarag de validar el objeto de tipo label
     @Override
     public void mouseReleased(MouseEvent e) {
         // TODO Auto-generated method stub

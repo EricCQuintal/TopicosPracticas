@@ -4,19 +4,19 @@ import java.awt.Graphics;
 import java.awt.Color;
 
 
-public class Componentes extends Canvas{
+public class Elementos extends Canvas{
 
-    public Componentes() {
+    public Elementos() {
 
 	}
 
 	public void paint(Graphics g) {
 
-		//Se dibuja el segundo componente que es el contenedor
+		//Contenedor recatangulo
 		g.setColor(Color.red);
-		g.fillRect(50, 50, 300, 300);
+		g.fillRect(20, 20, 200, 200);
 		
-		//Se dibuja el tercer componente que es el contenedor temporal
+		//contenedor de tipo romboide
 		g.setColor(Color.black);
 		g.drawLine(650, 200, 750, 300);
 		g.drawLine(650, 200, 750, 100);
